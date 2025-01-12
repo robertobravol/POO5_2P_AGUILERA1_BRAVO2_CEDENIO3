@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#FF0000</color> <!-- Rojo -->
+    <color name="orange">#FFA500</color> <!-- Naranja -->
+    <color name="yellow">#FFFF00</color> <!-- Amarillo -->
+    <color name="green">#008000</color> <!-- Verde -->
+    <color name="cyan">#00FFFF</color> <!-- Celeste -->
+    <color name="blue">#0000FF</color> <!-- Azul -->
+    <color name="indigo">#4B0082</color> <!-- Índigo -->
+    <color name="violet">#8A2BE2</color> <!-- Violeta -->
+    <color name="pale_yellow">#EEF9BF</color> <!-- Amarillo pálido -->
+    <color name="light_green">#A7E9AF</color> <!-- Verde claro -->
+    <color name="aqua_green">#75B79E</color> <!-- Verde agua -->
+    <color name="blue_gray">#6A8CAF</color> <!-- Azul grisáceo -->
+    <color name="dark_blue">#005187</color> <!-- Azul oscuro -->
+    <color name="medium_blue">#4d82bc</color> <!-- Azul medio -->
+    <color name="light_blue">#84b6f4</color> <!-- Azul claro -->
+    <color name="pale_cyan">#c4dafa</color> <!-- Celeste claro -->
+    <color name="off_white">#fcffff</color> <!-- Blanco azulado -->
+</resources>

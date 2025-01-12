@@ -1,0 +1,15 @@
+1,Guardianes del Multiverso,15/02/2025
+2,Cosmos: Más allá de las estrellas,10/03/2025
+3,El regreso de los titanes,25/04/2025
+4,La ciudad bajo el mar,15/05/2025
+5,Crónicas del futuro perdido,01/06/2025
+6,Los secretos de Avalon,20/06/2025
+7,Operación Everest,10/07/2025
+8,Ecos del pasado,05/08/2025
+9,La invasión de la galaxia roja,15/09/2025
+10,El bosque de los susurros,20/10/2025
+11,La leyenda del dragón negro,05/11/2025
+12,Misión Alpha Centauri,15/11/2025
+13,Reinos de hielo,01/12/2025
+14,La batalla final,15/12/2025
+15,El despertar de las sombras,25/12/2025

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Cinema</string>
+    <string name="idCineName">CineMax</string>
+    <string name="idLogin">Iniciar sesión</string>
+    <string name="idEstrenos">Proximos estrenos</string>
+
+    <string name="idUser">Usuario: </string>
+    <string name="idUserN">Ingrese su nombre de usuario.</string>
+    <string name="idPassword">Clave: </string>
+    <string name="idPasswordIn">Ingrese su clave.</string>
+
+    <string name="idSalir">Salir</string>
+
+
+</resources>
