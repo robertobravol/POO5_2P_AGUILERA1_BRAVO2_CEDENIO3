@@ -7,11 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.model.Usuario;
 
@@ -22,14 +18,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity2 extends AppCompatActivity {
+public class IniciarSesionActivity extends AppCompatActivity {
 
     private List<Usuario> usuarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_iniciar_sesion);
 
         // Cargar usuarios desde el archivo
         usuarios = cargarUsuarios();
@@ -45,7 +41,7 @@ public class MainActivity2 extends AppCompatActivity {
                 String contrasenaIngresada = contrasenaInput.getText().toString().trim();
 
                 if (usuarioIngresado.isEmpty() || contrasenaIngresada.isEmpty()) {
-                    Toast.makeText(MainActivity2.this, "Usuario o contraseña no pueden estar vacíos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(IniciarSesionActivity.this, "Usuario o contraseña no pueden estar vacíos", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -58,11 +54,11 @@ public class MainActivity2 extends AppCompatActivity {
                 }
 
                 if (accesoExitoso) {
-                    Toast.makeText(MainActivity2.this, "Ingreso exitoso", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity2.this, MainActivity4.class);
+                    Toast.makeText(IniciarSesionActivity.this, "Ingreso exitoso", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(IniciarSesionActivity.this, PeliculasDisponiblesActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(MainActivity2.this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(IniciarSesionActivity.this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
                 }
             }
         });

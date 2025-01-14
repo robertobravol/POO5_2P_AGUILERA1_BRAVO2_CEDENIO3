@@ -1,12 +1,12 @@
 package com.example.model;
 
-public class Estrenos {
+public class Estreno {
     private int idPelicula;
     private String titulo;
     private String fecha;
 
     // Constructor
-    public Estrenos(int idPelicula, String titulo, String fecha) {
+    public Estreno(int idPelicula, String titulo, String fecha) {
         this.idPelicula = idPelicula;
         this.titulo = titulo;
         this.fecha = fecha;

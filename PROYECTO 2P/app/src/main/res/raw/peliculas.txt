@@ -1,0 +1,10 @@
+1,Dune: Parte Dos,155
+2,Inside Out 2,110
+3,Deadpool & Wolverine,120
+4,Godzilla x Kong: El Nuevo Imperio,140
+5,Wicked,125
+6,Misión Imposible: Sentencia Mortal,158
+7,Avatar 3,190
+8,El Reino de la Luna,105
+9,Capitán América: Brave New World,135
+10,Los Juegos del Hambre,160
