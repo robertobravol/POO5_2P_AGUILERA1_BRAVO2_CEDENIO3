@@ -7,6 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".PeliculasDisponiblesActivity">
 
+
+
     <LinearLayout
         android:id="@+id/peliculasLayout"
         android:layout_width="match_parent"
@@ -42,28 +44,89 @@
                 android:padding="25dp" >
 
                 <ImageView
-                    android:id="@+id/imageView6"
+                    android:id="@+id/idDeadpool"
                     android:layout_width="300dp"
                     android:layout_height="250dp"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:paddingBottom="25dp"
                     app:srcCompat="@drawable/deadpoolandwolverine" />
 
                 <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/idCapitan"
                     android:layout_width="300dp"
                     android:layout_height="250dp"
+                    android:clickable="true"
                     android:paddingBottom="25dp"
                     app:srcCompat="@drawable/capamerica" />
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/idAvatar"
                     android:layout_width="300dp"
                     android:layout_height="250dp"
+                    android:clickable="true"
                     android:paddingBottom="25dp"
                     app:srcCompat="@drawable/avatar" />
+
+                <ImageView
+                    android:id="@+id/idDune"
+                    android:layout_width="300dp"
+                    android:layout_height="250dp"
+                    android:clickable="true"
+                    android:paddingBottom="25dp"
+                    app:srcCompat="@drawable/dune" />
+
+                <ImageView
+                    android:id="@+id/idGodzilla"
+                    android:layout_width="300dp"
+                    android:layout_height="250dp"
+                    android:clickable="true"
+                    android:paddingBottom="25dp"
+                    app:srcCompat="@drawable/godzilla" />
+
+                <ImageView
+                    android:id="@+id/idInsideOut"
+                    android:layout_width="300dp"
+                    android:layout_height="250dp"
+                    android:clickable="true"
+                    android:paddingBottom="25dp"
+                    app:srcCompat="@drawable/insideout2" />
+
+                <ImageView
+                    android:id="@+id/idJuegos"
+                    android:layout_width="300dp"
+                    android:layout_height="250dp"
+                    android:clickable="true"
+                    android:paddingBottom="25dp"
+                    app:srcCompat="@drawable/juegoshambre" />
+
+                <ImageView
+                    android:id="@+id/idWicked"
+                    android:layout_width="300dp"
+                    android:layout_height="250dp"
+                    android:clickable="true"
+                    android:paddingBottom="25dp"
+                    app:srcCompat="@drawable/wicked" />
+
+                <ImageView
+                    android:id="@+id/idReino"
+                    android:layout_width="300dp"
+                    android:layout_height="250dp"
+                    android:clickable="true"
+                    android:paddingBottom="25dp"
+                    app:srcCompat="@drawable/reinoluna" />
+
+                <ImageView
+                    android:id="@+id/idMision"
+                    android:layout_width="300dp"
+                    android:layout_height="250dp"
+                    android:clickable="true"
+                    android:paddingBottom="25dp"
+                    app:srcCompat="@drawable/misionimposible" />
             </LinearLayout>
         </ScrollView>
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

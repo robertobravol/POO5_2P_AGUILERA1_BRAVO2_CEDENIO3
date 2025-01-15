@@ -1,15 +1,19 @@
 package com.example.model;
 
-public class Pelicula {
+import java.io.Serializable;
+
+public class Pelicula implements Serializable {
     private int peliculaID;
     private String titulo;
-    private int duracion;
+    private String duracion;
+    private String nombreArchivo;
 
 
-    public Pelicula(int peliculaID, String titulo, int duracion){
+    public Pelicula(int peliculaID, String titulo, String duracion, String nombreArchivo){
         this.peliculaID = peliculaID;
         this.titulo = titulo;
         this.duracion = duracion;
+        this.nombreArchivo = nombreArchivo;
     }
 
 
@@ -30,11 +34,18 @@ public class Pelicula {
         this.titulo = titulo;
     }
 
-    public double getDuracion() {
+    public String getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(int duracion) {
+    public void setDuracion(String duracion) {
         this.duracion = duracion;
+    }
+    public String getNombreArchivo() {
+        return nombreArchivo;
+    }
+
+    public void setNombreArchivo(String nombreArchivo) {
+        this.nombreArchivo = nombreArchivo;
     }
 }

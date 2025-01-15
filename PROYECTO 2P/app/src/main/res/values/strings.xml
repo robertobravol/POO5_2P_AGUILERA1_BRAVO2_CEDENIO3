@@ -11,6 +11,13 @@
 
     <string name="idSalir">Salir</string>
     <string name="idPeliculas">Películas:</string>
+    <string name="idFuncion">Elija la función</string>
+    <string name="idFecha">Fecha:</string>
+    <string name="idHorarios">Horarios:</string>
+    <string name="idEntradas">Entradas:</string>
+    <string name="btnContinuar">Continuar</string>
+    <string name="btnCancelar">Cancelar</string>
+
 
 
 </resources>
