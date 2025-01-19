@@ -105,18 +105,20 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Ingrese el número de entradas."
-            android:inputType="text" />
+            android:inputType="number" />
 
         <Button
             android:id="@+id/btnContinuar"
-            android:layout_width="365dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/medium_blue"
             android:text="@string/btnContinuar" />
 
         <Button
             android:id="@+id/btnCancelar"
-            android:layout_width="367dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/medium_blue"
             android:text="@string/btnCancelar" />
 
     </LinearLayout>
