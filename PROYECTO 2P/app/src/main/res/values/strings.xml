@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Cinema</string>
+    <string name="app_name">Cinepolis</string>
     <string name="idCineName">CineMax</string>
     <string name="idLogin">Iniciar sesión</string>
     <string name="idEstrenos">Proximos estrenos</string>
@@ -17,6 +17,14 @@
     <string name="idEntradas">Entradas:</string>
     <string name="btnContinuar">Continuar</string>
     <string name="btnCancelar">Cancelar</string>
+
+    <string name="idDetalleFuncion">Detalles de Función</string>
+    <string name="idDetallesPago">Detalles de Pago</string>
+    <string name="idNamefive">Nombre del propietario:</string>
+    <string name="idNumber">Numero de tarjeta:</string>
+    <string name="idCodigoCVV">CVV:</string>
+    <string name="btnPagar">Pagar</string>
+    <string name="btnCancelartwo">Cancelar</string>
 
 
 </resources>

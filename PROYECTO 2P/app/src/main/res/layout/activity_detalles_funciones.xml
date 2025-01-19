@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/TvFuncion"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetallesFunciones">
@@ -14,6 +14,7 @@
         android:orientation="vertical"
         android:padding="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/off_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -22,9 +23,126 @@
             android:id="@+id/idDetalleFuncion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Detalles de Función"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
             android:textAlignment="center"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:text="@string/idDetalleFuncion" />
+
+        <LinearLayout
+            android:id="@+id/idContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/TvPelicula"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/TvDuracion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/TvFecha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/TvSala"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/TvEntradas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/TvTotalPagar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/idDetallesPago"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/idDetallesPago"/>
+
+        <TextView
+            android:id="@+id/idNamefive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/idNamefive"
+            android:textAlignment="viewStart" />
+
+        <EditText
+            android:id="@+id/idPropietario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Ingrese su nombre." />
+
+        <TextView
+            android:id="@+id/idNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/idNumber" />
+
+        <EditText
+            android:id="@+id/idNumTarjeta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="Ingrese numero de tarjeta."/>
+
+        <TextView
+            android:id="@+id/idCodigoCVV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/idCodigoCVV" />
+
+        <EditText
+            android:id="@+id/idCodCV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Ingrese el CVV."
+            android:inputType="number"/>
+
+        <Button
+            android:id="@+id/btnPagar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/btnPagar"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:backgroundTint="@color/medium_blue"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btnCancelartwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/medium_blue"
+            android:text="@string/btnCancelartwo" />
 
 
     </LinearLayout>

@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/TvFuncion"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PeliculasDisponiblesActivity">
@@ -14,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="25dp">
+        android:padding="25dp"
+        android:background="@color/off_white">
 
         <ImageView
             android:id="@+id/idCinepolis"

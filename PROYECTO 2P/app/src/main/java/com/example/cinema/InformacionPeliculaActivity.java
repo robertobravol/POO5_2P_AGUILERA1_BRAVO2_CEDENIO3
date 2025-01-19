@@ -20,7 +20,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.model.Funcion;
-import com.example.model.Pelicula;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -59,7 +58,7 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_informacion_pelicula);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.TvFuncion), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
@@ -117,18 +116,19 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
 
         btnContinuar.setOnClickListener(v -> {
             try {
-                validarCampos(); // Validar campos antes de continuar
+                validarCampos();
                 Toast.makeText(this, "Datos completos, continuando...", Toast.LENGTH_SHORT).show();
 
-                // Lógica para cambiar a la siguiente actividad
+                // Enviar los datos a la siguiente actividad
                 Intent intent = new Intent(this, DetallesFunciones.class);
+                intent.putExtra("Titulo", titulo);
+                intent.putExtra("Duracion", duracion);
                 intent.putExtra("Fecha", editTextFecha.getText().toString());
                 intent.putExtra("Horario", spHorarios.getSelectedItem().toString());
                 intent.putExtra("Entradas", editTextEntradas.getText().toString());
                 startActivity(intent);
 
             } catch (DatosIncompletosException e) {
-                // Mostrar mensaje de error si falta algún dato
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -136,7 +136,7 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
         // Configurar botón "Cancelar"
         btnCancelar.setOnClickListener(v -> {
             Toast.makeText(this, "Operación cancelada", Toast.LENGTH_SHORT).show();
-            finish(); // Finaliza la actividad y regresa a la anterior
+            finish();
         });
 
 
