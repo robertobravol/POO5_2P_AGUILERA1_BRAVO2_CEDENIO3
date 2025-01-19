@@ -19,6 +19,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.model.DatosIncompletosException;
 import com.example.model.Funcion;
 
 import java.io.BufferedReader;
@@ -28,12 +29,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
-class DatosIncompletosException extends Exception {
-    public DatosIncompletosException(String message) {
-        super(message);
-    }
-}
 
 
 public class InformacionPeliculaActivity extends AppCompatActivity {
