@@ -55,7 +55,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
                 if (accesoExitoso) {
                     Toast.makeText(IniciarSesionActivity.this, "Ingreso exitoso", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(IniciarSesionActivity.this, PeliculasDisponiblesActivity.class);
+                    Intent intent = new Intent(IniciarSesionActivity.this, PeliculaDisponibleActivity.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(IniciarSesionActivity.this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();

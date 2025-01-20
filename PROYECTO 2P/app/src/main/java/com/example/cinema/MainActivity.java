@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Crear un Intent para iniciar la tercera actividad
-                Intent intent = new Intent(MainActivity.this, ProximosEstrenosActivity.class);
+                Intent intent = new Intent(MainActivity.this, ProximoEstrenoActivity.class);
                 startActivity(intent);
             }
         });

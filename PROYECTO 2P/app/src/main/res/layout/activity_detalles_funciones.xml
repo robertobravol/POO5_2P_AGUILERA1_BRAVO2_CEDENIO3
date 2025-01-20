@@ -5,7 +5,7 @@
     android:id="@+id/TvFuncion"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetallesFunciones">
+    tools:context=".DetalleFuncion">
 
     <LinearLayout
         android:id="@+id/idFunciones"
@@ -125,16 +125,43 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Ingrese el CVV."
-            android:inputType="number"/>
+            android:inputType="textPassword"/>
+
+        <RadioGroup
+            android:id="@+id/RadioGroupTarjeta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/idMaster"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="100dp"
+                android:text="@string/idMaster" />
+
+            <RadioButton
+                android:id="@+id/idVisa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/idVisa" />
+
+        </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/idTerminos"
+            android:layout_width="349dp"
+            android:layout_height="wrap_content"
+            android:text="@string/idTerminos" />
 
         <Button
             android:id="@+id/btnPagar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:backgroundTint="@color/medium_blue"
             android:text="@string/btnPagar"
             app:layout_constraintEnd_toEndOf="parent"
-            android:backgroundTint="@color/medium_blue"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
@@ -146,4 +173,5 @@
 
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

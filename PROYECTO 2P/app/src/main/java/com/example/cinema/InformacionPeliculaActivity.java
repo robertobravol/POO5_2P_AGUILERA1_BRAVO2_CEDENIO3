@@ -81,7 +81,7 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
 
         int imageResId = getResources().getIdentifier(nombreArchivo, "drawable", getPackageName());
         imageMovie.setImageResource(imageResId);
-
+        final int[] idFuncion = {0};
 
 
 
@@ -99,7 +99,15 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
                     public void onDateSet(DatePicker view, int anio, int mes, int dia) {
                         String fechaSeleccionada = String.format("%02d/%02d/%04d", dia, mes + 1, anio);
                         editTextFecha.setText(fechaSeleccionada);
-                        String[] datossp = mostrarFuncionesSpinner(fechaSeleccionada);
+                        ArrayList<String> elemntos = new ArrayList<>();
+                        for(Funcion funcion: funciones){
+                            if(funcion.getFecha().equals(fechaSeleccionada) && funcion.getIdPelicula() == peliculaID){
+                                elemntos.add(funcion.toString());
+                                idFuncion[0] = funcion.getIdFuncion();
+
+                            }
+                        }
+                        String[] datossp = elemntos.toArray(new String[0]);
                         ArrayAdapter<String> adapter = new ArrayAdapter<>(InformacionPeliculaActivity.this, android.R.layout.simple_spinner_item, datossp);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spHorarios.setAdapter(adapter);
@@ -109,18 +117,20 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
             }
         });
 
+
         btnContinuar.setOnClickListener(v -> {
             try {
                 validarCampos();
                 Toast.makeText(this, "Datos completos, continuando...", Toast.LENGTH_SHORT).show();
 
                 // Enviar los datos a la siguiente actividad
-                Intent intent = new Intent(this, DetallesFunciones.class);
+                Intent intent = new Intent(this, DetalleFuncion.class);
                 intent.putExtra("Titulo", titulo);
                 intent.putExtra("Duracion", duracion);
                 intent.putExtra("Fecha", editTextFecha.getText().toString());
                 intent.putExtra("Horario", spHorarios.getSelectedItem().toString());
                 intent.putExtra("Entradas", editTextEntradas.getText().toString());
+                intent.putExtra("Funcion", idFuncion[0]);
                 startActivity(intent);
 
             } catch (DatosIncompletosException e) {
@@ -145,6 +155,7 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
         for(Funcion funcion: funciones){
             if(funcion.getFecha().equals(fecha) && funcion.getIdPelicula() == peliculaID){
                 elemntos.add(funcion.toString());
+
             }
         }
         return elemntos.toArray(new String[0]);

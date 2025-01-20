@@ -5,7 +5,7 @@
     android:id="@+id/TvFuncion"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProximosEstrenosActivity">
+    tools:context=".ProximoEstrenoActivity">
 
     <LinearLayout
         android:id="@+id/idContent"

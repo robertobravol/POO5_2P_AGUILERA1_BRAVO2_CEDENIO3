@@ -5,3 +5,4 @@ public class DatosIncompletosException extends Exception {
         super(message);
     }
 }
+

@@ -23,6 +23,9 @@
     <string name="idNamefive">Nombre del propietario:</string>
     <string name="idNumber">Numero de tarjeta:</string>
     <string name="idCodigoCVV">CVV:</string>
+    <string name="idVisa">Visa</string>
+    <string name="idMaster">Mastercard</string>
+    <string name="idTerminos">Acepto los términos y condiciones.</string>
     <string name="btnPagar">Pagar</string>
     <string name="btnCancelartwo">Cancelar</string>
 

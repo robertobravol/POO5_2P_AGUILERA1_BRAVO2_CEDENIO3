@@ -20,7 +20,7 @@ import java.util.List;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
-public class ProximosEstrenosActivity extends AppCompatActivity {
+public class ProximoEstrenoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class ProximosEstrenosActivity extends AppCompatActivity {
         Button btnGoToSecond = findViewById(R.id.idBtSalir);
         btnGoToSecond.setOnClickListener(v -> {
             // Crear un Intent para iniciar la segunda actividad
-            Intent intent = new Intent(ProximosEstrenosActivity.this, MainActivity.class);
+            Intent intent = new Intent(ProximoEstrenoActivity.this, MainActivity.class);
             startActivity(intent);
         });
 

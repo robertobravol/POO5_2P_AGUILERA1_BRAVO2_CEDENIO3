@@ -18,7 +18,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class PeliculasDisponiblesActivity extends AppCompatActivity {
+public class PeliculaDisponibleActivity extends AppCompatActivity {
 
     private List<Pelicula> peliculas;
     ImageView deadpoolMovie;
@@ -71,7 +71,7 @@ public class PeliculasDisponiblesActivity extends AppCompatActivity {
 
 
     private void openDetails(int idPelicula, String titulo, String duracion, String nombreImagen) {
-        Intent intent = new Intent(PeliculasDisponiblesActivity.this, InformacionPeliculaActivity.class);
+        Intent intent = new Intent(PeliculaDisponibleActivity.this, InformacionPeliculaActivity.class);
         intent.putExtra("PeliculaId", idPelicula);
         intent.putExtra("Titulo", titulo);
         intent.putExtra("Duracion", duracion);
