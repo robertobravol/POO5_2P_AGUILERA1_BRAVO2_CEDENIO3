@@ -1,6 +1,7 @@
 package com.example.cinema;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -110,8 +111,12 @@ public class DetalleFuncion extends AppCompatActivity {
     }
     private int generarIdPago() {
 
+        SharedPreferences sharedPreferences = getSharedPreferences("PagoPrefs", MODE_PRIVATE);
+        int ultimoIdPago = sharedPreferences.getInt("ultimoIdPago", 0); // Valor inicial es 0
+        int nuevoIdPago = ultimoIdPago + 1;
+        sharedPreferences.edit().putInt("ultimoIdPago", nuevoIdPago).apply();
+        return nuevoIdPago;
 
-        return (int) (System.currentTimeMillis() % 100000);
     }
     private void verificarCampos() throws DatosIncompletosException {
         String Propietario = idPropietario.getText().toString().trim();

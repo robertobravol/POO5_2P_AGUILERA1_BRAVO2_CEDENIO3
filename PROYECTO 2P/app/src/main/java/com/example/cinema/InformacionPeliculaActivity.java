@@ -146,21 +146,7 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
 
 
     }
-
-
-
-
-    public String[] mostrarFuncionesSpinner(String fecha){
-        ArrayList<String> elemntos = new ArrayList<>();
-        for(Funcion funcion: funciones){
-            if(funcion.getFecha().equals(fecha) && funcion.getIdPelicula() == peliculaID){
-                elemntos.add(funcion.toString());
-
-            }
-        }
-        return elemntos.toArray(new String[0]);
-    }
-
+    
     public List<Funcion> cargarFuncionesDesdeArchivos() {
         List<Funcion> funciones = new ArrayList<>();
         try {
