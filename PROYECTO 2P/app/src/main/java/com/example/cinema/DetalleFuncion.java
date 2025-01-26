@@ -23,66 +23,26 @@ import java.io.ObjectOutputStream;
 
 
 /**
- * Clase DetalleFuncion
- *
- * Representa la actividad que gestiona los detalles de una función de cine, incluyendo
- * información sobre la película, entradas, pagos y el procesamiento del pago.
- * Extiende {@link AppCompatActivity}.
+ * Activity que gestiona los detalles de una función de cine, incluyendo información sobre la película, entradas, pagos y el procesamiento del pago.
  */
 public class DetalleFuncion extends AppCompatActivity {
-
-    /** Campo para el nombre del propietario de la tarjeta */
     private EditText idPropietario;
-
-    /** Campo para el número de la tarjeta */
     private EditText idNumTarjeta;
-
-    /** Campo para el código CVV de la tarjeta */
     private EditText idCodCV;
-
-    /** Botón para confirmar el pago */
     private Button btnPagar;
-
-    /** Botón para cancelar la operación */
     private Button btnCancelartwo;
-
-    /** Identificador único de la función */
     private int idFuncion;
-
-    /** Identificador único del pago */
     private int idPago;
-
-    /** Total a pagar por las entradas */
     private double totalPagar;
-
-    /** TextView para mostrar el título de la película */
     private TextView tvPelicula;
-
-    /** TextView para mostrar la duración de la película */
     private TextView tvDuracion;
-
-    /** TextView para mostrar la fecha de la función */
     private TextView tvFecha;
-
-    /** TextView para mostrar la sala de la función */
     private TextView tvSala;
-
-    /** TextView para mostrar la cantidad de entradas compradas */
     private TextView tvEntradas;
-
-    /** TextView para mostrar el total a pagar */
     private TextView tvTotalPagar;
-
-    /** Grupo de radio buttons para seleccionar el tipo de tarjeta */
     private RadioGroup radioGroupTarjeta;
-
-    /** RadioButton para seleccionar Visa */
     private RadioButton idVisa;
-
-    /** RadioButton para seleccionar Mastercard */
     private RadioButton idMaster;
-
-    private CheckBox idTerminos;
 
     /**
      * Método onCreate. Inicializa la actividad y configura los componentes de la interfaz.
@@ -109,7 +69,6 @@ public class DetalleFuncion extends AppCompatActivity {
         radioGroupTarjeta = findViewById(R.id.RadioGroupTarjeta);
         idVisa = findViewById(R.id.idVisa);
         idMaster = findViewById(R.id.idMaster);
-        idTerminos = findViewById(R.id.idTerminos);
 
         // Obtención de datos del intent
         Intent intent = getIntent();
@@ -182,7 +141,7 @@ public class DetalleFuncion extends AppCompatActivity {
         String NumTarjeta = idNumTarjeta.getText().toString().trim();
         String CodCVV = idCodCV.getText().toString().trim();
 
-        if (Propietario.isEmpty() || NumTarjeta.isEmpty() || CodCVV.isEmpty() || !idTerminos.isChecked()) {
+        if (Propietario.isEmpty() || NumTarjeta.isEmpty() || CodCVV.isEmpty()) {
             throw new DatosIncompletosException("Debes llenar todos los campos antes de continuar.");
         }
     }

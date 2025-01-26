@@ -32,6 +32,11 @@ import java.util.Calendar;
 import java.util.List;
 
 
+/**
+ * Activity que muestra la información de una película, incluyendo su título, duración, imagen,
+ * fecha, horario y el número de entradas. Permite al usuario seleccionar la fecha y el horario de la función
+ * para luego proceder con la compra de entradas.
+ */
 public class InformacionPeliculaActivity extends AppCompatActivity {
     private TextView titleMovie;
     private TextView durationMovie;
@@ -47,20 +52,22 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
     private Button btnContinuar;
     private Button btnCancelar;
 
-
-
+    /**
+     * Método llamado al crear la actividad. Configura la interfaz de usuario, carga las funciones desde un archivo
+     * y maneja los eventos de interacción con los elementos.
+     *
+     * @param savedInstanceState El estado guardado de la actividad.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_informacion_pelicula);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.TvFuncion), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        // Configuración de la interfaz de usuario.
         funciones = cargarFuncionesDesdeArchivos();
 
+        // Inicialización de los componentes de la interfaz.
         titleMovie = findViewById(R.id.titleMovie);
         durationMovie = findViewById(R.id.durationMovie);
         imageMovie = findViewById(R.id.imageMovie);
@@ -70,20 +77,21 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
         btnContinuar = findViewById(R.id.btnContinuar);
         btnCancelar = findViewById(R.id.btnCancelar);
 
-
-
+        // Obtención de los datos pasados a través del Intent.
         titulo = getIntent().getStringExtra("Titulo");
-        duracion = getIntent().getStringExtra("Duracion")+" "+ "min";
+        duracion = getIntent().getStringExtra("Duracion") + " " + "min";
         nombreArchivo = getIntent().getStringExtra("Imagen");
         peliculaID = getIntent().getIntExtra("PeliculaId", 0);
 
+        // Actualización de la interfaz con los datos de la película.
         titleMovie.setText(titulo);
         durationMovie.setText(duracion);
-
         int imageResId = getResources().getIdentifier(nombreArchivo, "drawable", getPackageName());
         imageMovie.setImageResource(imageResId);
+
         final int[] idFuncion = {0};
 
+        // Configuración del selector de fecha.
         editTextFecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,18 +100,19 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
                 int month = calendar.get(Calendar.MONTH);
                 int day = calendar.get(Calendar.DAY_OF_WEEK);
 
-                // Configurar el DatePicker
+                // Configuración del DatePicker
                 DatePickerDialog dpicker = new DatePickerDialog(InformacionPeliculaActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int anio, int mes, int dia) {
                         String fechaSeleccionada = String.format("%02d/%02d/%04d", dia, mes + 1, anio);
                         editTextFecha.setText(fechaSeleccionada);
+
+                        // Cargar los horarios para la fecha seleccionada.
                         ArrayList<String> elemntos = new ArrayList<>();
-                        for(Funcion funcion: funciones){
-                            if(funcion.getFecha().equals(fechaSeleccionada) && funcion.getIdPelicula() == peliculaID){
+                        for(Funcion funcion: funciones) {
+                            if(funcion.getFecha().equals(fechaSeleccionada) && funcion.getIdPelicula() == peliculaID) {
                                 elemntos.add(funcion.toString());
                                 idFuncion[0] = funcion.getIdFuncion();
-
                             }
                         }
 
@@ -112,19 +121,15 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spHorarios.setAdapter(adapter);
 
-                        // Si no hay elementos, lanzamos la excepción
+                        // Si no hay funciones disponibles para la fecha, lanzar una excepción.
                         if (elemntos.isEmpty()) {
                             try {
                                 throw new SinFuncionException();
                             } catch (SinFuncionException e) {
                                 Toast.makeText(InformacionPeliculaActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                                return; // Salimos del método para evitar errores adicionales
+                                return;
                             }
                         }
-
-
-
-
                     }
                 }, year, month, day);
 
@@ -132,17 +137,13 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
+        // Configuración del botón "Continuar".
         btnContinuar.setOnClickListener(v -> {
             try {
                 validarCampos();
                 Toast.makeText(this, "Datos completos, continuando...", Toast.LENGTH_SHORT).show();
 
-                // Enviar los datos a la siguiente actividad
+                // Enviar los datos a la siguiente actividad.
                 Intent intent = new Intent(this, DetalleFuncion.class);
                 intent.putExtra("Titulo", titulo);
                 intent.putExtra("Duracion", duracion);
@@ -157,15 +158,18 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
             }
         });
 
-        // Configurar botón "Cancelar"
+        // Configuración del botón "Cancelar".
         btnCancelar.setOnClickListener(v -> {
             Toast.makeText(this, "Operación cancelada", Toast.LENGTH_SHORT).show();
             finish();
         });
-
-
     }
 
+    /**
+     * Carga las funciones de cine desde un archivo de recursos raw.
+     *
+     * @return Lista de funciones.
+     */
     public List<Funcion> cargarFuncionesDesdeArchivos() {
         List<Funcion> funciones = new ArrayList<>();
         try {
@@ -181,7 +185,7 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
                     String titulo = partes[2].trim();
                     String duracion = partes[3].trim();
                     String nombreArchivo = partes[4].trim();
-                    funciones.add(new Funcion(funcionID ,peliculaID, titulo, duracion, nombreArchivo));
+                    funciones.add(new Funcion(funcionID, peliculaID, titulo, duracion, nombreArchivo));
                 }
             }
             reader.close();
@@ -190,6 +194,12 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
         }
         return funciones;
     }
+
+    /**
+     * Valida los campos del formulario antes de proceder con la compra de entradas.
+     *
+     * @throws DatosIncompletosException Si algún campo obligatorio está vacío.
+     */
     private void validarCampos() throws DatosIncompletosException {
         String fecha = editTextFecha.getText().toString();
         String horario = spHorarios.getSelectedItem() != null ? spHorarios.getSelectedItem().toString() : "";
@@ -205,5 +215,4 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
             throw new DatosIncompletosException("El número de entradas no está especificado.");
         }
     }
-
 }
