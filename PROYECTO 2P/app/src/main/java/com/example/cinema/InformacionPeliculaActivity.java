@@ -19,8 +19,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.model.DatosIncompletosException;
+import com.example.exception.DatosIncompletosException;
 import com.example.model.Funcion;
+import com.example.exception.SinFuncionException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -83,8 +84,6 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
         imageMovie.setImageResource(imageResId);
         final int[] idFuncion = {0};
 
-
-
         editTextFecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,15 +106,35 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
 
                             }
                         }
+
                         String[] datossp = elemntos.toArray(new String[0]);
                         ArrayAdapter<String> adapter = new ArrayAdapter<>(InformacionPeliculaActivity.this, android.R.layout.simple_spinner_item, datossp);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spHorarios.setAdapter(adapter);
+
+                        // Si no hay elementos, lanzamos la excepción
+                        if (elemntos.isEmpty()) {
+                            try {
+                                throw new SinFuncionException();
+                            } catch (SinFuncionException e) {
+                                Toast.makeText(InformacionPeliculaActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                                return; // Salimos del método para evitar errores adicionales
+                            }
+                        }
+
+
+
+
                     }
                 }, year, month, day);
+
                 dpicker.show();
             }
         });
+
+
+
+
 
 
         btnContinuar.setOnClickListener(v -> {
@@ -146,7 +165,7 @@ public class InformacionPeliculaActivity extends AppCompatActivity {
 
 
     }
-    
+
     public List<Funcion> cargarFuncionesDesdeArchivos() {
         List<Funcion> funciones = new ArrayList<>();
         try {
