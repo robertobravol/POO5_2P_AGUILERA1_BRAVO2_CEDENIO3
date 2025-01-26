@@ -43,6 +43,7 @@ public class DetalleFuncion extends AppCompatActivity {
     private RadioGroup radioGroupTarjeta;
     private RadioButton idVisa;
     private RadioButton idMaster;
+    private CheckBox idTerminos;
 
     /**
      * Método onCreate. Inicializa la actividad y configura los componentes de la interfaz.
@@ -69,6 +70,7 @@ public class DetalleFuncion extends AppCompatActivity {
         radioGroupTarjeta = findViewById(R.id.RadioGroupTarjeta);
         idVisa = findViewById(R.id.idVisa);
         idMaster = findViewById(R.id.idMaster);
+        idTerminos = findViewById(R.id.idTerminos);
 
         // Obtención de datos del intent
         Intent intent = getIntent();
@@ -141,7 +143,7 @@ public class DetalleFuncion extends AppCompatActivity {
         String NumTarjeta = idNumTarjeta.getText().toString().trim();
         String CodCVV = idCodCV.getText().toString().trim();
 
-        if (Propietario.isEmpty() || NumTarjeta.isEmpty() || CodCVV.isEmpty()) {
+        if (Propietario.isEmpty() || NumTarjeta.isEmpty() || CodCVV.isEmpty() || !idTerminos.isChecked()) {
             throw new DatosIncompletosException("Debes llenar todos los campos antes de continuar.");
         }
     }

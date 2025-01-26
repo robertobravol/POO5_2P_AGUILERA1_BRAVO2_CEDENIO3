@@ -111,6 +111,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
+            android:maxLength="16"
             android:hint="Ingrese numero de tarjeta."/>
 
         <TextView
@@ -125,7 +126,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Ingrese el CVV."
-            android:inputType="textPassword"/>
+            android:maxLength="3"
+            android:inputType="numberPassword"/>
 
         <RadioGroup
             android:id="@+id/RadioGroupTarjeta"
