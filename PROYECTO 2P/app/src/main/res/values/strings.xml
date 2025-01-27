@@ -9,7 +9,9 @@
     <string name="idPassword">Clave: </string>
     <string name="idPasswordIn">Ingrese su clave.</string>
 
+
     <string name="idSalir">Salir</string>
+    <string name="idBtOrdenar">Ordenar por nombre</string>
     <string name="idPeliculas">Películas:</string>
     <string name="idFuncion">Elija la función</string>
     <string name="idFecha">Fecha:</string>

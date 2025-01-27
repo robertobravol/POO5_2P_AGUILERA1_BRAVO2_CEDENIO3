@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import android.widget.TableLayout;
@@ -29,6 +31,7 @@ public class ProximoEstrenoActivity extends AppCompatActivity {
     private TableLayout tableLayout;
     private List<Estreno> estrenosList;
     private Button btnGoToSecond;
+    private Button btnOrdenar;
 
     /**
      * Método llamado cuando se crea la actividad.
@@ -39,44 +42,51 @@ public class ProximoEstrenoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Habilitar Edge to Edge para que la interfaz ocupe toda la pantalla
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_proximos_estrenos);
-
-        // Configurar el botón para iniciar la actividad principal
         btnGoToSecond = findViewById(R.id.idBtSalir);
+        btnOrdenar = findViewById(R.id.idBtOrdenar);
+        btnOrdenar.setOnClickListener(v -> {
+            Collections.sort(estrenosList, Comparator.comparing(Estreno::getTitulo));
+
+            // Reconstruir la tabla con los datos ordenados
+            mostrarDatosEnTabla(estrenosList);
+        });
         btnGoToSecond.setOnClickListener(v -> {
-            // Crear un Intent para iniciar la actividad principal
             Intent intent = new Intent(ProximoEstrenoActivity.this, MainActivity.class);
             startActivity(intent);
         });
 
-        // Configurar el TableLayout para mostrar los estrenos
         tableLayout = findViewById(R.id.idTableEstreno);
-
-        // Cargar los datos del archivo estrenos.txt
         estrenosList = cargarEstrenosDesdeArchivo();
+        mostrarDatosEnTabla(estrenosList);
+    }
 
-        // Llenar la tabla dinámicamente con los datos de los estrenos
-        for (Estreno estreno : estrenosList) {
+    /**
+     * Método para mostrar los datos en la tabla.
+     * Este método construye dinámicamente las filas de la tabla.
+     *
+     * @param estrenos La lista de estrenos que se deben mostrar.
+     */
+    private void mostrarDatosEnTabla(List<Estreno> estrenos) {
+
+        TableLayout table = findViewById(R.id.idTableEstreno);
+        int childCount = table.getChildCount();
+        for (int i = 1; i < childCount; i++) {
+            table.removeViewAt(1);
+        }
+
+        for (Estreno estreno : estrenos) {
             TableRow fila = new TableRow(this);
-
-            // Crear y configurar la vista para el título del estreno
             TextView titulo = new TextView(this);
             titulo.setText(estreno.getTitulo());
             titulo.setPadding(8, 8, 8, 8);
-
-            // Crear y configurar la vista para la fecha del estreno
             TextView fecha = new TextView(this);
             fecha.setText(estreno.getFecha());
             fecha.setPadding(8, 8, 8, 8);
-
-            // Agregar las vistas de título y fecha a la fila
             fila.addView(titulo);
             fila.addView(fecha);
-
-            // Agregar la fila a la tabla
-            tableLayout.addView(fila);
+            table.addView(fila);
         }
     }
 
@@ -88,31 +98,26 @@ public class ProximoEstrenoActivity extends AppCompatActivity {
     private List<Estreno> cargarEstrenosDesdeArchivo() {
         List<Estreno> estrenosList = new ArrayList<>();
         try {
-            // Abrir el archivo de recursos y leerlo línea por línea
             InputStream inputStream = getResources().openRawResource(R.raw.estrenos);
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
             String linea;
             while ((linea = reader.readLine()) != null) {
-                // Separar la línea en partes usando coma como delimitador
                 String[] partes = linea.split(",");
                 if (partes.length == 3) {
-                    // Parsear los datos del estreno y agregarlo a la lista
                     int idPelicula = Integer.parseInt(partes[0].trim());
                     String titulo = partes[1].trim();
                     String fecha = partes[2].trim();
                     estrenosList.add(new Estreno(idPelicula, titulo, fecha));
                 }
             }
-            // Cerrar el lector después de procesar el archivo
             reader.close();
         } catch (IOException e) {
-            // Manejar posibles errores al leer el archivo
             e.printStackTrace();
         }
-
-        // Retornar la lista de estrenos cargados
         return estrenosList;
     }
 }
+
+
 

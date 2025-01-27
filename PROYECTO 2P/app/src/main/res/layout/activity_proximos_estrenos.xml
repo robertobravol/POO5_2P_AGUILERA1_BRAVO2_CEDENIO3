@@ -11,11 +11,12 @@
         android:id="@+id/idContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@color/off_white"
+        android:orientation="vertical"
         android:padding="25dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="-71dp">
 
         <ImageView
             android:id="@+id/imageView"
@@ -35,44 +36,64 @@
             android:textAllCaps="true"
             android:textStyle="bold" />
 
-        <TableLayout
-            android:id="@+id/idTableEstreno"
+
+        <ScrollView
+            android:id="@+id/idScrollView"
+            android:layout_width="wrap_content"
+            android:layout_height="252dp">
+
+            <TableLayout
+                android:id="@+id/idTableEstreno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:stretchColumns="1">
+
+                <!-- Encabezado de la tabla -->
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/medium_blue"
+                        android:padding="8dp"
+                        android:text="Título"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/medium_blue"
+                        android:padding="8dp"
+                        android:text="Fecha"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <!-- Aquí se agregarán las filas de datos dinámicamente -->
+            </TableLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/idBtOrdenar"
             android:layout_width="match_parent"
-            android:layout_height="289dp"
-            android:background="@color/pale_cyan"
-            android:stretchColumns="1">
-
-            <!-- Encabezado de la tabla -->
-            <TableRow>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/medium_blue"
-                    android:padding="8dp"
-                    android:text="Título"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/medium_blue"
-                    android:padding="8dp"
-                    android:text="Fecha"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
-            </TableRow>
-
-        </TableLayout>
+            android:layout_height="wrap_content"
+            android:layout_margin="30sp"
+            android:backgroundTint="@color/medium_blue"
+            android:text="@string/idBtOrdenar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"  />
 
         <Button
             android:id="@+id/idBtSalir"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30sp"
-            android:text="@string/idSalir"
             android:backgroundTint="@color/medium_blue"
+            android:text="@string/idSalir"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
     </LinearLayout>
