@@ -3,6 +3,7 @@ package com.example.cinema;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.exception.DatosIncompletosException;
 import com.example.model.Pago;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -158,11 +160,29 @@ public class DetalleFuncion extends AppCompatActivity {
      * @throws IOException Si ocurre un error al escribir en los archivos.
      */
     private void guardarPago(String nombre, String numeroTarjeta, String tipo, int entradas) throws IOException {
+        // Crear el objeto Pago
         Pago pago = new Pago(idPago, idFuncion, nombre, numeroTarjeta, tipo, entradas, totalPagar);
-        try (FileOutputStream fos = openFileOutput("pagos.txt", MODE_APPEND)) {
+
+        // Obtener el directorio público en "Documents"
+        File directorioDocumentos = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
+
+        // Asegurarse de que el directorio exista
+        if (!directorioDocumentos.exists()) {
+            directorioDocumentos.mkdirs();
+        }
+
+        // Crear el archivo pagos.txt en ese directorio
+        File archivoPagos = new File(directorioDocumentos, "pagos.txt");
+
+        // Escribir los datos en el archivo pagos.txt
+        try (FileOutputStream fos = new FileOutputStream(archivoPagos, true)) { // 'true' para agregar contenido
             fos.write((pago.toString() + "\n").getBytes());
         }
-        try (FileOutputStream fosBin = openFileOutput("funcion" + idFuncion + ".bin", MODE_PRIVATE);
+
+        // Crear el archivo .bin en el directorio Documents
+        File archivoBin = new File(directorioDocumentos, "funcion" + idFuncion + ".bin");
+        // Guardar el objeto en el archivo .bin
+        try (FileOutputStream fosBin = new FileOutputStream(archivoBin);
              ObjectOutputStream oos = new ObjectOutputStream(fosBin)) {
             oos.writeObject(pago);
         }
