@@ -4,7 +4,7 @@ package com.example.model;
  * Clase que representa un estreno de película.
  * Contiene los detalles de un estreno, incluyendo el ID de la película, el título y la fecha de estreno.
  */
-public class Estreno {
+public class Estreno implements Comparable<Estreno> {
 
     private int idPelicula;
     private String titulo;
@@ -75,6 +75,17 @@ public class Estreno {
      */
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+
+    /**
+     * Implementación del método compareTo para comparar por el título de la película.
+     *
+     * @param otroEstreno El objeto Estreno con el que se va a comparar.
+     * @return Un valor entero que representa la comparación (ascendente por título).
+     */
+    @Override
+    public int compareTo(Estreno otroEstreno) {
+        return this.titulo.compareTo(otroEstreno.titulo);
     }
 
     /**

@@ -121,8 +121,6 @@ public class IniciarSesionActivity extends AppCompatActivity {
                     }
                 }
             }
-
-            // Cerrar el lector después de procesar el archivo
             reader.close();
         } catch (IOException e) {
             // Manejar posibles errores al leer el archivo
